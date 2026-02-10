@@ -32,13 +32,32 @@ All SQL queries are well-commented for clarity, making this project suitable for
 
 ***Removing duplicates using COUNT, ROW_NUMBER() and DELETE.***
 
+<img width="774" height="498" alt="pro2_part1_pic1" src="https://github.com/user-attachments/assets/7d5ef8bf-6722-4d97-b9eb-ee22aa7060c4" />
+
+
+
 ***Renaming columns for readability (e.g., ï»¿id → id).***
+
+<img width="592" height="544" alt="pro2_part1_pic2" src="https://github.com/user-attachments/assets/8d204f35-6fc4-4fa0-a5c6-a38385666da1" />
+
+
 
 ***Standardizing text (e.g., fixing typos in State_Name).***
 
+<img width="436" height="594" alt="pro2_part1_pic3" src="https://github.com/user-attachments/assets/d953f78c-8a41-456a-a26c-d65a50ccf3a2" />
+
+
+
 ***Filling missing values for critical columns (Place, Type, ALand, AWater).***
 
+<img width="565" height="687" alt="pro2_part1_pic4" src="https://github.com/user-attachments/assets/ef8c84d5-6640-4214-ac9e-75a090cd2961" />
+
+
+
 ***Validating data quality using DISTINCT, GROUP BY and HAVING clauses.***
+
+<img width="565" height="692" alt="pro2_part1_pic5" src="https://github.com/user-attachments/assets/c373880a-3ae0-4ab6-8e2c-81c39057a7b9" />
+
 
 ```
 -- Identify duplicates
@@ -76,6 +95,9 @@ set place = 'Autaugaville'
 ## After cleaning, exploratory analysis was performed:
 
 **1.Largest states by land area:**
+
+<img width="565" height="692" alt="pro2_part2_pic1" src="https://github.com/user-attachments/assets/ae6b4e4d-9ef0-46a4-8d67-078141354e05" />
+
 ```
 select State_Name, sum(ALand), sum(AWater)
 from us_household_income
@@ -85,6 +107,9 @@ limit 10;
 ```
 
 **2.States with lowest household income:**
+
+<img width="567" height="662" alt="pro2_part2_pic2" src="https://github.com/user-attachments/assets/505201fc-6115-4122-b05a-4f6e44da012e" />
+
 ```
 select u.State_Name, round(avg(Mean),1), round(avg(Median),1)
 from us_household_income as u
@@ -97,6 +122,9 @@ limit 5;
 ```
 
 **3.Correlation of area type with income:**
+
+<img width="567" height="662" alt="pro2_part2_pic3" src="https://github.com/user-attachments/assets/505201fc-6115-4122-b05a-4f6e44da012e" />
+
 ```
 select type, count(type), round(avg(mean),1), round(avg(median),1)
 from us_household_income as u
@@ -109,6 +137,10 @@ order by 2 desc;
 ```
 
 **4.Income by city and state:**
+
+<img width="567" height="662" alt="pro2_part2_pic4" src="https://github.com/user-attachments/assets/505201fc-6115-4122-b05a-4f6e44da012e" />
+
+
 ```
 select u.State_Name, city, round(avg(mean),2), round(avg(median),2)
 from us_household_income as u
@@ -117,6 +149,7 @@ inner join ushouseholdincome_statistics as us
 group by u.State_Name, city
 order by round(avg(mean),2) desc;
 ```
+
 ## Key Findings
 
 ### Certain states have much larger land area but fewer high-income households.
