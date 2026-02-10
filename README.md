@@ -12,9 +12,7 @@
 
 All SQL queries are well-commented for clarity, making this project suitable for learning and portfolio showcase.
 
-## Dataset
-
-## The project uses two datasets:
+## Dataset: The project uses two datasets:
 
 ### 1. us_household_income
 
